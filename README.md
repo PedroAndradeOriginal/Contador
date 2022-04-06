@@ -1,2 +1,2 @@
 # contador
-Trecho de código para utilizar botões para alterar valor de uma input
+Código feito para botões alterarem valor de uma input
