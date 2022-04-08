@@ -1,9 +1,32 @@
-
-/*função para zerar a variável e impedir sinal*/
-function declaraVariavel() {
+/*função para declarar variáveis, impedir sinais e ouvir eventos*/
+window.onload = function () {
+    var intervalo;
     let inputDeNumeros = 0;
-    document.getElementById("input01").value = inputDeNumeros;
-    /*trecho de código abaixo para impedir o usuário de colocar sinal de menos*/
+    document.querySelector("#input01").value = inputDeNumeros;
+
+    const botaoSub = document.querySelector('#botaoMenos');
+    botaoSub.addEventListener("click", subtrai, false);
+
+    const botaoAdd = document.querySelector('#botaoMais');
+    botaoAdd.addEventListener("click", adiciona, false);
+
+    document.getElementById('botaoMenos').onmousedown = function () {
+        intervalo = setInterval(function () { subtrai(); }, 100);;
+    }
+
+    document.getElementById('botaoMais').onmousedown = function () {
+        intervalo = setInterval(function () { adiciona(); }, 100);;
+    }
+
+    document.getElementById('botaoMenos').onmouseup = function () {
+        clearInterval(intervalo);
+    }
+
+    document.getElementById('botaoMais').onmouseup = function () {
+        clearInterval(intervalo);
+    }
+
+    /*trecho de código abaixo para impedir o usuário de colocar sinal de operação*/
     const input = document.querySelector("#input01");
     input.addEventListener("keypress", function (e) {
 
